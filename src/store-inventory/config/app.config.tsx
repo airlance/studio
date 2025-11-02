@@ -7,7 +7,7 @@ import {
   Settings2,
   UsersRound,
 } from 'lucide-react';
-import { MenuConfig } from './types';
+import type { MenuConfig } from './types';
 
 export const MENU_SIDEBAR: MenuConfig  = [
   {

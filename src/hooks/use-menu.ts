@@ -1,4 +1,4 @@
-import type { MenuItem } from '../config/types';
+import type { MenuItem } from '@/store-inventory/config/types';
 
 type MenuConfig = MenuItem[];
 

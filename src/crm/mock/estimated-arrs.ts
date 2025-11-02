@@ -1,4 +1,4 @@
-import { EstimatedArr } from '../types/estimated-arr';
+import type { EstimatedArr } from '../types/estimated-arr';
 
 export const ESTIMATED_ARRS: EstimatedArr[] = [
   {

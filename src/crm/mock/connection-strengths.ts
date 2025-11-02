@@ -1,4 +1,4 @@
-import { ConnectionStrength } from '../types/connection-strength';
+import type { ConnectionStrength } from '../types/connection-strength';
 
 export const CONNECTION_STRENGTHS: ConnectionStrength[] = [
   {

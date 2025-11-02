@@ -1,4 +1,4 @@
-import { EmployeeRange } from '../types/employee-range';
+import type { EmployeeRange } from '../types/employee-range';
 
 export const EMPLOYEE_RANGES: EmployeeRange[] = [
   {

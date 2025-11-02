@@ -1,5 +1,5 @@
 import { toAbsoluteUrl } from '@/lib/helpers';
-import { Company } from '../types/company';
+import type { Company } from '../types/company';
 
 export const CONNECTION_STRENGTHS = [
   {

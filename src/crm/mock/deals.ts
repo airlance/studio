@@ -1,4 +1,4 @@
-import { Deal } from '@/crm/types/deal';
+import type { Deal } from '@/crm/types/deal';
 import { toAbsoluteUrl } from '@/lib/helpers';
 
 export const mockDeals: Deal[] = [

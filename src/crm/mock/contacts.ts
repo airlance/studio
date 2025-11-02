@@ -1,5 +1,5 @@
 import { toAbsoluteUrl } from '@/lib/helpers';
-import { Contact } from '../types/contact';
+import type { Contact } from '../types/contact';
 
 function getRandomSocialLinks(): Record<string, string> {
   const platforms = [

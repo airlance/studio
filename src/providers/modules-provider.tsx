@@ -5,6 +5,7 @@ import { ScreenLoader } from '../components/screen-loader';
 const LazyCrmModule = lazy(() => import('@/crm'));
 const LazyStoreInventoryModule = lazy(() => import('@/store-inventory'));
 const LazyMailModule = lazy(() => import('@/mail'));
+const LazyMessangerModule = lazy(() => import('@/messenger'));
 
 export function ModulesProvider() {
   const location = useLocation();
@@ -47,5 +48,18 @@ export function ModulesProvider() {
         <Route path="/mail/*" element={<LazyMailModule />} />
       </Routes>
     );
+  } else {
+      return (
+          <Routes>
+              <Route
+                  path="/*"
+                  element={
+                      <Suspense fallback={<ScreenLoader />}>
+                          <LazyMessangerModule />
+                      </Suspense>
+                  }
+              />
+          </Routes>
+      );
   }
 }
