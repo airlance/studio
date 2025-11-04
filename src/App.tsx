@@ -1,8 +1,8 @@
 import { ThemeProvider } from 'next-themes';
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from '@/react-helmet-async';
 import { LoadingBarContainer } from 'react-top-loading-bar';
 import { BrowserRouter } from 'react-router-dom';
-import { ModulesProvider } from './providers/modules-provider';
+import { ModuleProvider } from "@/providers/module-provider";
 import { Toaster } from './components/ui/sonner';
 
 const { BASE_URL } = import.meta.env;
@@ -21,7 +21,7 @@ export function App() {
                 <LoadingBarContainer>
                     <BrowserRouter basename={BASE_URL}>
                         <Toaster />
-                        <ModulesProvider />
+                        <ModuleProvider />
                     </BrowserRouter>
                 </LoadingBarContainer>
             </HelmetProvider>

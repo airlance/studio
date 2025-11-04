@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-helmet-async": "git+https://github.com/airlance/react-helmet-async.git",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@headless-tree/core": "^1.5.1",
