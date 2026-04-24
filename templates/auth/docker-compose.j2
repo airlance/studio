@@ -22,11 +22,11 @@
       API_EXTERNAL_URL: http://auth.studio.localhost
 
       GOTRUE_DB_DRIVER: postgres
-      GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:root@db:5432/postgres
+      GOTRUE_DB_DATABASE_URL: postgres://gotrue:gotrue_password@db:5432/postgres
 
       GOTRUE_SITE_URL: http://dashboard.studio.localhost
-      GOTRUE_URI_ALLOW_LIST: ${ADDITIONAL_REDIRECT_URLS}
-      GOTRUE_DISABLE_SIGNUP: ${DISABLE_SIGNUP}
+      GOTRUE_URI_ALLOW_LIST: ""
+      GOTRUE_DISABLE_SIGNUP: false
 
       GOTRUE_JWT_ADMIN_ROLES: service_role
       GOTRUE_JWT_AUD: authenticated
@@ -40,7 +40,7 @@
       # For Podman, use: GOTRUE_JWT_KEYS: ${JWT_KEYS}
       #GOTRUE_JWT_KEYS: ${JWT_KEYS:-[]}
 
-      GOTRUE_EXTERNAL_EMAIL_ENABLED: ${ENABLE_EMAIL_SIGNUP}
+      GOTRUE_EXTERNAL_EMAIL_ENABLED: true
       GOTRUE_EXTERNAL_ANONYMOUS_USERS_ENABLED: false
       GOTRUE_MAILER_AUTOCONFIRM: false
 
@@ -55,14 +55,13 @@
       GOTRUE_SMTP_USER: 
       GOTRUE_SMTP_PASS: 
       GOTRUE_SMTP_SENDER_NAME: Studio
-      GOTRUE_MAILER_URLPATHS_INVITE: ${MAILER_URLPATHS_INVITE}
-      GOTRUE_MAILER_URLPATHS_CONFIRMATION: ${MAILER_URLPATHS_CONFIRMATION}
-      GOTRUE_MAILER_URLPATHS_RECOVERY: ${MAILER_URLPATHS_RECOVERY}
-      GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE: ${MAILER_URLPATHS_EMAIL_CHANGE}
+      GOTRUE_MAILER_URLPATHS_INVITE: "/verify"
+      GOTRUE_MAILER_URLPATHS_CONFIRMATION: "/verify"
+      GOTRUE_MAILER_URLPATHS_RECOVERY: "/verify"
+      GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE: "/verify"
 
-
-      GOTRUE_EXTERNAL_PHONE_ENABLED: ${ENABLE_PHONE_SIGNUP}
-      GOTRUE_SMS_AUTOCONFIRM: ${ENABLE_PHONE_AUTOCONFIRM}
+      GOTRUE_EXTERNAL_PHONE_ENABLED: true
+      GOTRUE_SMS_AUTOCONFIRM: true
 
       # Uncomment to enable OAuth / social login providers.
       # GOTRUE_EXTERNAL_GOOGLE_ENABLED: ${GOOGLE_ENABLED}
@@ -132,7 +131,8 @@
       # GOTRUE_HOOK_SEND_EMAIL_URI: "http://host.docker.internal:54321/functions/v1/email_sender"
       # GOTRUE_HOOK_SEND_EMAIL_SECRETS: "v1,whsec_VGhpcyBpcyBhbiBleGFtcGxlIG9mIGEgc2hvcnRlciBCYXNlNjQgc3RyaW5n"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - studio
     ports:
