@@ -1,7 +1,13 @@
   db:
     image: postgres:16-alpine
     container_name: db
-    restart: {{ services_restart_policy }}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
@@ -12,3 +18,4 @@
       - "5432:5432"
     volumes:
       - db:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
