@@ -7,9 +7,9 @@ projects:
  - name: auth
    src: git@github.com:airlance/auth.git
  - name: studio
-   src: git@github.com:airlance/s.git
+   src: git@github.com:resoul/studio.git
  - name: api
-   src: git@github.com:airlance/a.git
+   src: git@github.com:resoul/api.git
 
 enabled_services:
   - adminer
