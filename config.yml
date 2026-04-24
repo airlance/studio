@@ -4,8 +4,6 @@ docker_mode: root
 services_restart_policy: always
 
 projects:
- - name: auth
-   src: git@github.com:airlance/auth.git
  - name: studio
    src: git@github.com:resoul/studio.git
  - name: api
