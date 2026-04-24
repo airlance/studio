@@ -1,0 +1,15 @@
+services:
+
+# storages
+{% include "adminer/docker-compose.j2" %}
+{% include "mailpit/docker-compose.j2" %}
+{% include "db/docker-compose.j2" %}
+{% include "auth/docker-compose.j2" %}
+{% include "studio/docker-compose.j2" %}
+{% include "api/docker-compose.j2" %}
+
+volumes:
+  db:
+
+networks:
+  studio:

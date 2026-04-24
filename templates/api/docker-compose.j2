@@ -1,0 +1,16 @@
+  api:
+    image: airlance/go:1.25.5.compile
+    container_name: api
+    restart: unless-stopped
+    command: CompileDaemon --build="make build" --directory=/go/src/github.com/resoul/api --recursive=true -pattern="(.+\.go|.+\.env)" -exclude=studio -exclude=studio-arm64 --command="/go/src/github.com/resoul/api/studio serve"
+    volumes:
+      - ./projects/api:/go/src/github.com/resoul/api
+    environment:
+      DOMAINS: api.studio.localhost
+    networks:
+      - studio
+    ports:
+      - 3032:8080
+    depends_on:
+      - db
+      - auth

@@ -1,0 +1,14 @@
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: mailpit
+    ports:
+      - 3016:8025
+      - 1025:1025
+    restart: {{ services_restart_policy }}
+    environment:
+      DOMAINS: mail.studio.localhost
+      MP_SMTP_BIND_ADDR: 0.0.0.0:1025
+      MP_UI_BIND_ADDR: 0.0.0.0:8025
+      MP_HOSTNAME: mail.studio.localhost
+    networks:
+      - studio

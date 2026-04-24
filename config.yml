@@ -1,0 +1,20 @@
+os_name: ~
+file_system: ~
+docker_mode: root
+services_restart_policy: always
+
+projects:
+ - name: auth
+   src: git@github.com:airlance/auth.git
+ - name: studio
+   src: git@github.com:airlance/s.git
+ - name: api
+   src: git@github.com:airlance/a.git
+
+enabled_services:
+  - adminer
+  - db
+  - mailpit
+  - auth
+  - api
+  - studio

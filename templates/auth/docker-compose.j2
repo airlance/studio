@@ -1,0 +1,17 @@
+  auth:
+    image: airlance/supabase-auth
+    container_name: auth
+    restart: unless-stopped
+    environment:
+      GOTRUE_DB_MIGRATIONS_PATH: /go/src/github.com/supabase/auth/migrations
+      DOMAINS: auth.studio.localhost
+    command: CompileDaemon --build="make build" --directory=/go/src/github.com/supabase/auth --recursive=true -pattern="(.+\.go|.+\.env)" -exclude=auth -exclude=auth-arm64 -exclude=.env --command="/go/src/github.com/supabase/auth/auth -c=.env.docker"
+    volumes:
+      - ./projects/auth:/go/src/github.com/supabase/auth
+    depends_on:
+      - db
+    networks:
+      - studio
+    ports:
+      - 9999:9999
+      - 9100:9100
